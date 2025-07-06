@@ -1,214 +1,446 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Vikas shah</title>
+    <title>Vikas Shah</title>
     <link rel="icon" href="./react native4.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        h1 {
-            text-align: center;
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f8fb;
+            color: #222;
         }
-
-        p {
-            text-align: center;
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #01ABBA;
+            padding: 0 32px;
         }
-
-        ul {
-            list-style-type: none;
-            margin: -7;
+        .navbar ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
             padding: 0;
-            overflow: hidden;
-            background-color: #01ABBA;
         }
-
-        /* .ul {
-      list-style-type: none;
-      margin: -7;
-      padding: 0px;
-    } */
-
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 16px;
+        .navbar li a {
+            color: #fff;
             text-decoration: none;
+            font-weight: 500;
+            padding: 18px 0;
+            transition: color 0.2s;
         }
-
-        li a:hover {
-            background: #111111;
+        .navbar li a:hover {
+            color: #222;
         }
+        .navbar img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            background: linear-gradient(120deg, #01ABBA 60%, #f4f8fb 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero-img {
+            width: 320px;
+            height: 380px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 32px rgba(1,171,186,0.18);
+            margin-bottom: 24px;
+            border: 6px solid #fff;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-18px);}
+        }
+        .hero-title {
+            font-size: 2.6em;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            animation: fadeInDown 1.2s;
+        }
+        .hero-role {
+            font-size: 1.5em;
+            color: #f4f8fb;
+            margin-bottom: 18px;
+            animation: fadeInUp 1.2s;
+        }
+        .hero-cta {
+            margin-top: 18px;
+            animation: fadeIn 2s;
+        }
+        .hero-cta a {
+            display: inline-block;
+            background: #fff;
+            color: #01ABBA;
+            font-weight: bold;
+            padding: 12px 32px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 1.1em;
+            box-shadow: 0 2px 12px rgba(1,171,186,0.10);
+            transition: background 0.2s, color 0.2s;
+        }
+        .hero-cta a:hover {
+            background: #01ABBA;
+            color: #fff;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeIn {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+        .main-content {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(1,171,186,0.10);
+            padding: 40px 32px;
+        }
+        .section {
+            margin-bottom: 32px;
+        }
+        h2 {
+            color: #01ABBA;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 4px;
+        }
+        ul, ol {
+            padding-left: 18px;
+        }
+        .project-title {
+            font-weight: 500;
+        }
+        .project-tech {
+            color: #01ABBA;
+            font-size: 0.95em;
+        }
+        .role {
+            font-weight: bold;
+            color: #333;
+        }
+        .date {
+            color: #888;
+            font-size: 0.95em;
+        }
+        .links a {
+            color: #01ABBA;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 900px) {
+            .main-content { padding: 24px 8px; }
+            .navbar { flex-direction: column; gap: 8px; padding: 0 8px; }
+        }
+        @media (max-width: 600px) {
+            .hero-img { width: 140px; height: 140px; }
+            .hero-title { font-size: 1.6em; }
+            .main-content { padding: 12px 2vw; }
+        }
+        .experience-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+.exp-card {
+    background: #f8feff;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px #01ABBA22;
+    padding: 24px 20px;
+    min-width: 260px;
+    max-width: 340px;
+    flex: 1 1 260px;
+    margin-bottom: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.exp-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px #01ABBA33;
+}
+.exp-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #01ABBA;
+    margin-bottom: 6px;
+}
+.exp-role {
+    color: #333;
+    font-weight: 500;
+}
+.exp-date {
+    color: #888;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    display: block;
+}
+.exp-desc {
+    color: #444;
+    font-size: 1em;
+}
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 12px;
+}
+.skill-chip {
+    background: #e6fafd;
+    color: #01ABBA;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 6px #01ABBA11;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.skill-chip i {
+    font-size: 1.1em;
+}
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+}
+.project-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px #01ABBA22;
+    overflow: hidden;
+    width: 320px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px #01ABBA33;
+}
+.project-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background: #e6fafd;
+}
+.project-content {
+    padding: 18px 18px 14px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.project-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #01ABBA;
+    margin-bottom: 4px;
+}
+.project-tech {
+    color: #01ABBA;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+}
+.project-desc {
+    color: #444;
+    font-size: 0.98em;
+    margin-bottom: 10px;
+}
+.project-links a {
+    color: #01ABBA;
+    text-decoration: none;
+    margin-right: 12px;
+    font-weight: 500;
+}
+.project-links a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 900px) {
+    .experience-grid, .projects-grid { flex-direction: column; align-items: center; }
+}
     </style>
 </head>
-
 <body>
-    <ul style='align-items: center;display: flex;justify-content: space-between;'>
-        <div>
-            <li><a href="./index.html">home</a></li>
-            <li><a href="./index contact.html">contact</a></li>
-            <li><a href="./index about page.html">about</a></li>
-        </div>
-        <a href="https://www.instagram.com/shahvikas2444/?hl=en" target="_blank" title="instagram">
-            <img src='./instagram logo 2.0.png' style="height:40px;width: 40px;" />
+    <nav class="navbar">
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index contact.html">Contact</a></li>
+            <li><a href="./index about page.html">About</a></li>
+        </ul>
+        <a href="https://www.instagram.com/shahvikas2444/?hl=en" target="_blank" title="Instagram">
+            <img src="./instagram logo 2.0.png" alt="Instagram" />
         </a>
-    </ul>
-    <div>
-
-
-        <h1> HI' I am Vikas shah</h1>
-        <div>
-            <img alt="gulshan" src="vikas shah 2.jpg" style="display: block;
-      margin-left: auto;
-      margin-right: auto;" />
-            <br>
-            <br>
-            <p>SUMMARY:     
-Results-driven mobile application developer with expertise in developing and maintaining cross-platform 
-applications for iOS and Android platforms using React Native. Proven ability to leverage React Native's 
-capabilities for efficient code sharing and consistent user experiences. Skilled in sockets, API integration, 
-third-party implementation, Redux, Redux Thunk, Persistor, and GraphQL. Possesses excellent 
-communication and analytical skills. 
-       <br>
-              <br>
-       <br>
-
-EXPERIENCE: 
-Milkano Agro SR React Native Developer (Mobile Application Developer ) Jun 2024 - currently working 
-       <br>
-       <br>
-       <br>
-  
-APPINLAY React Native Developer (Mobile Application Developer ) Mar 2021 - may 2024  
-Job Responsibilities: 
-● Working on e-Commerce Application and also an IOT Application . Created Native Modules for both 
-iOS and Android. ● Worked on a short video Application.  ● Worked on a health care Application. ● 
-Worked on Business process application i.e:delivery ,loading ,order processing Applications. 
-       <br>
-       <br>
-LIVE PROJECTS: 
-                  <br>
-       <br>
-       <br>
- 
-Title: BigBonus 
- Overview: BigBonus is your go-to online grocery shopping app, offering a seamless and convenient way 
-to shop for fresh produce, daily essentials, and much more, all from the comfort of your home. With user
-friendly navigation and fast delivery, you can stock up on everything you need in just a few clicks.  
-       <br>
-       <br>
-       <br>
-    
-Features : BigBonus app offers a hassle-free grocery shopping experience with features like easy 
-navigation, real-time tracking, and secure payment options. Users can also earn rewards and get 
-exclusive offers. 
-Technologies used: React Native,Map,Sockets , Node. 
-Play Store: https://play.google.com/store/apps/details?id=com.milkano.bigbonusapp 
-Role: React-Native Developer with leading complete team.  
-       <br>
-       <br>
-       <br>
-       
-Title: RESEX App 
- Overview: Resex is a comprehensive job portal app designed for job seekers in the US. With  
-       <br>
-       <br>
-  
-features like job listings, chat functionality, and a map feature, users can easily find and apply for their 
-dream jobs. The app also offers user profiles, employer profiles, multiple resumes, job alerts, and a 
-resume scanning feature, making it easy to apply for jobs on-the-go. Resex is the perfect platform to 
-connect job seekers and employers in various industries.     
-Features : job listings, chat function, map feature, resume scanning, user and employer profiles, multiple 
-resumes, and job alerts for various industries in the US. many more. 
-Technologies used: React Native,Map,Sockets, Node js Mongos, 
- Role: React-Native Developer with leading complete team. 
-       <br>
-       <br>
-       
-Title: Meatigo 
- Overview: Meatigo is a mobile app providing fresh meat and seafood delivery services in India, offering a 
-wide range of products, including chicken, mutton, fish, and more. 
- Features List: 
- Meatigo app offers a hassle-free meat shopping experience with features like easy navigation, real-time 
-tracking, and secure payment options. Users can also earn rewards and get exclusive offers. 
- Technologies used: React Native, Graph HQL ,Map. Branch io. 
- Role: React Native Developer. 
-App Store: https://apps.apple.com/in/app/meatigo-gourmet-meat-delivered/id1441947928 
-Play Store: https://play.google.com/store/search?q=meatigo&c=apps 
-       <br>
-       <br>
-       <br>
-            
-     
-Title: Tradnary 
- Overview: Tradnary is on a mission to provide the world's best solution to deliver handicraft products in 
-the least possible time. 
- Features List: 
- Tradnary app offers a hassle-free handicraft products shopping experience with features like easy 
-navigation. Users can also view and get exclusive offers directly from the company and its quality. 
-Technologies used: React Native 
-Play store: https://play.google.com/store/apps/details?id=com.tradnary 
- Role: React Native Developer. 
-            <br>
-       <br>
-       <br>
-
-       
-INDUSTRIAL TRAINING (Internship) : 
-       <br>
-       <br>
-       
-6 Month Training on Java from Ducat Noida. 
-       <br>
-       <br>
-       <br>
-       
-SKILLS: 
-              <br>
-       <br>
-
-Languages: JavaScript ,Typescript ,Java,Object C,Swift. 
-Software, Tools & Clouds: Postman ,Vs Code,Eclipse,Xcode ,Android Studio,Jira.     
-Frameworks/Libraries: React-Native , React, Redux ,Redux Thunk,Redux Toolkit, Firebase ,Push 
-,React js, Notification, Navigation, Socket.io, Razorpay, Facebook ,google sign in ,Google Maps, and 
-many more.. 
-       <br>
-       <br>
-       
-EDUCATION: 
-       <br>
-       <br>
-       
-IGNOU (2020-2023) 
-       <br>
-       <br>
-       
-Master of Computer Application (MCA) 57.54% 
-       <br>
-       <br>
-       
-IGNOU (2017-2020) 
-       <br>
-       <br>
-       
-Bachelor of Computer Application (BCA) 56.82% 
-       <br>
-       <br>
-       
-C.B.S.E (2017) 
-       <br>
-       <br>
-       
-12th 60% 
-C.B.S.E (2015) 10th 69% 
-       <br>
-       <br>
-. 
-Certifications: 
-Java Expert Ducat No : 161120212812639 
-https://www.ducatindia.com/verify-certificate </p>
+    </nav>
+    <section class="hero">
+        <img class="hero-img" src="vikas shah 2.jpg" alt="Vikas Shah" />
+        <div class="hero-title">Hi, I'm Vikas Shah</div>
+        <div class="hero-role">React Native Developer</div>
+        <div class="hero-cta">
+            <a href="./index contact.html">Let's Connect</a>
+        </div>
+    </section>
+    <div class="main-content">
+        <div class="section">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <div class="exp-title">Milkano Agro SR</div>
+                    <div class="exp-role">React Native Developer</div>
+                    <span class="exp-date">Jun 2024 – Present</span>
+                    <div class="exp-desc">
+                        Leading mobile app development for grocery e-commerce and IoT-based platforms.<br>
+                        Creating native modules for Android and iOS.
+                    </div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-title">APPINLAY</div>
+                    <div class="exp-role">React Native Developer</div>
+                    <span class="exp-date">Mar 2021 – May 2024</span>
+                    <div class="exp-desc">
+                        Delivered multiple apps across e-commerce, IoT, healthcare, video, and business process automation.<br>
+                        Developed reusable components, optimized performance, and collaborated with cross-functional teams.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Key Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-chip">JavaScript</span>
+                <span class="skill-chip">TypeScript</span>
+                <span class="skill-chip">React Native</span>
+                <span class="skill-chip">React</span>
+                <span class="skill-chip">Redux</span>
+                <span class="skill-chip">Redux Toolkit</span>
+                <span class="skill-chip">Firebase</span>
+                <span class="skill-chip">Socket.io</span>
+                <span class="skill-chip">Java</span>
+                <span class="skill-chip">Swift</span>
+                <span class="skill-chip">Objective-C</span>
+                <span class="skill-chip">Android Studio</span>
+                <span class="skill-chip">Xcode</span>
+                <span class="skill-chip">API Integration</span>
+                <span class="skill-chip">GraphQL</span>
+                <span class="skill-chip">Google Maps</span>
+                <span class="skill-chip">Razorpay</span>
+                <span class="skill-chip">Push Notifications</span>
+                <span class="skill-chip">Navigation</span>
+                <span class="skill-chip">Jira</span>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img class="project-img" src="project1.jpg" alt="BigBonus App" />
+                    <div class="project-content">
+                        <div>
+                            <div class="project-title">BigBonus – Online Grocery App</div>
+                            <div class="project-tech">[React Native, Sockets, Map, Node.js]</div>
+                            <div class="project-desc">
+                                Grocery delivery platform with real-time order tracking, payments, and location features.
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.milkano.bigbonusapp" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img class="project-img" src="project2.jpg" alt="RESEX App" />
+                    <div class="project-content">
+                        <div>
+                            <div class="project-title">RESEX App – US Job Portal</div>
+                            <div class="project-tech">[React Native, Sockets, Map, Node.js, MongoDB]</div>
+                            <div class="project-desc">
+                                Job portal with chat, resume uploads, alerts, and employer profiles.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img class="project-img" src="project3.jpg" alt="Meatigo App" />
+                    <div class="project-content">
+                        <div>
+                            <div class="project-title">Meatigo – Fresh Meat Delivery App</div>
+                            <div class="project-tech">[React Native, GraphQL, Map, Branch.io]</div>
+                            <div class="project-desc">
+                                Fresh meat delivery with location, offers, and seamless checkout.
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://apps.apple.com/in/app/meatigo-gourmet-meat-delivered/id1441947928" target="_blank">App Store</a>
+                            <a href="https://play.google.com/store/search?q=meatigo&c=apps" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img class="project-img" src="project4.jpg" alt="Tradnary App" />
+                    <div class="project-content">
+                        <div>
+                            <div class="project-title">Tradnary – Handicraft Products Delivery App</div>
+                            <div class="project-tech">[React Native]</div>
+                            <div class="project-desc">
+                                Handicraft delivery platform for unique products.
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.tradnary" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li>Master of Computer Application (MCA), IGNOU, 2020–2023, 57.54%</li>
+                <li>Bachelor of Computer Application (BCA), IGNOU, 2017–2020, 56.82%</li>
+                <li>12th (CBSE), 2017, 60%</li>
+                <li>10th (CBSE), 2015, 69%</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Certifications</h2>
+            <ul>
+                <li>
+                    Java Expert – Ducat Noida<br>
+                    Certificate No: 161120212812639<br>
+                    <a href="https://www.ducatindia.com/verify-certificate" target="_blank" style="color:#01ABBA;">Verify Here</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </body>
-
 </html>

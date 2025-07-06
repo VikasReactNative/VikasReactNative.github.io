@@ -1,90 +1,114 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Vikas shah</title>
+    <title>Vikas Shah | Contact</title>
     <link rel="icon" href="./react native4.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f8fb;
+            color: #222;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #01ABBA;
+            padding: 0 32px;
+        }
+        .navbar ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 18px 0;
+            transition: color 0.2s;
+        }
+        .navbar li a:hover {
+            color: #222;
+        }
+        .navbar img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        .contact-container {
+            max-width: 500px;
+            margin: 48px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(1,171,186,0.08);
+            padding: 40px 32px;
+        }
         h1 {
             text-align: center;
+            color: #01ABBA;
+            margin-bottom: 16px;
         }
-
-        p {
-            text-align: center;
-        }
-
-        ul {
-            list-style-type: none;
-            margin: -7;
+        .contact-list {
+            list-style: none;
             padding: 0;
-            overflow: hidden;
-            background-color: #01ABBA;
+            margin: 0;
         }
-
-        /* .ul {
-      list-style-type: none;
-      margin: -7;
-      padding: 0px;
-    } */
-
-        li {
-            float: left;
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 1.08em;
         }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 16px;
+        .contact-list span {
+            margin-left: 12px;
+        }
+        .contact-list a {
+            color: #01ABBA;
             text-decoration: none;
         }
-
-        li a:hover {
-            background: #111111;
+        .contact-list a:hover {
+            text-decoration: underline;
+        }
+        .icon {
+            font-size: 1.3em;
+            width: 28px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .contact-container { padding: 24px 8px; }
+            .navbar { flex-direction: column; gap: 8px; padding: 0 8px; }
         }
     </style>
 </head>
-
 <body>
-    <ul style='align-items: center;display: flex;justify-content: space-between;'>
-        <div>
-            <li><a href="./index.html">home</a></li>
-            <li><a href="./index contact.html">contact</a></li>
-            <li><a href="./index about page.html">about</a></li>
-        </div>
-        <a href="https://www.instagram.com/shahvikas2444/?hl=en" target="_blank" title="instagram">
-            <img src='./instagram logo 2.0.png' style="height:40px;width: 40px;" />
+    <nav class="navbar">
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index contact.html">Contact</a></li>
+            <li><a href="./index about page.html">About</a></li>
+        </ul>
+        <a href="https://www.instagram.com/shahvikas2444/?hl=en" target="_blank" title="Instagram">
+            <img src="./instagram logo 2.0.png" alt="Instagram" />
         </a>
-    </ul>
-    <div>
-        <h1 style="text-align: center;">For contact</h1>
+    </nav>
+    <div class="contact-container">
+        <h1>Contact Me</h1>
+        <ul class="contact-list">
+            <li><span class="icon">📍</span><span>Delhi, India</span></li>
+            <li><span class="icon">📧</span><span><a href="mailto:shahvikas2444@gmail.com">shahvikas2444@gmail.com</a></span></li>
+            <li><span class="icon">📱</span><span><a href="tel:+919213601386">+91 9213601386</a></span></li>
+            <li><span class="icon">🔗</span><span>
+                <a href="https://www.linkedin.com/in/mr-vikas-shah/" target="_blank">LinkedIn: Mr. Vikas Shah</a>
+            </span></li>
+        </ul>
+        <p style="margin-top:32px; text-align:center; color:#666;">
+            We’d love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to get in touch.
+        </p>
     </div>
-    <br>
-    <br>
-    <p style="text-align: left;">📞 Contact Us
-        We’d love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to get
-        in touch with us.
-        <br>
-        <br>
-        📍 Address:
-        123 Web Street,
-        Delhi, India – 110001
-        <br>
-        <br>
-        📧 Email:
-        shahvikas2444@gmail.com
-        <br>
-        <br>
-        📱 Phone:
-        +91 9213601386
-        <br>
-        <br>
-        🔗 Connect with Me:
-        LinkedIn: Mr. Vikas Shah
-        <br>
-        <br>
-    </p>
-    </h1>
-
 </body>
-
 </html>
